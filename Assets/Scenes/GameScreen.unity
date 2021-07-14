@@ -420,14 +420,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 364802412949512258, guid: 6c490d617b1b3514da6c988aa4f45c48, type: 3}
-      propertyPath: thrustForce
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 364802412949512258, guid: 6c490d617b1b3514da6c988aa4f45c48, type: 3}
-      propertyPath: rotateThrust
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 5060389106051469546, guid: 6c490d617b1b3514da6c988aa4f45c48, type: 3}
       propertyPath: m_Name
       value: PlayerRocket
@@ -477,8 +469,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6086273319618410960, guid: 6c490d617b1b3514da6c988aa4f45c48, type: 3}
-      propertyPath: m_Constraints
-      value: 56
+      propertyPath: m_Drag
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c490d617b1b3514da6c988aa4f45c48, type: 3}

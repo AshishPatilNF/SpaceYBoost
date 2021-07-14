@@ -34,12 +34,16 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
+            rigidBody.freezeRotation = true;
             transform.Rotate(rotateThrust * Time.deltaTime * Vector3.forward);
         }
         else if (Input.GetKey(KeyCode.D))
         {
+            rigidBody.freezeRotation = true;
             transform.Rotate(rotateThrust * Time.deltaTime * -Vector3.forward);
         }
+
+        rigidBody.freezeRotation = false;
 
         //transform.Rotate(0, 0, Input.GetAxis("Horizontal") * -rotateThrust * Time.deltaTime);
     }
