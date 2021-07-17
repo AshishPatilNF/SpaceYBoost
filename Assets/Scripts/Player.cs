@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
 
     int currentSceneIndex;
 
-    bool isAlive = true;
+    bool hasMotion = true;
 
     Rigidbody rigidBody;
 
@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isAlive = true;
+        hasMotion = true;
         rigidBody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isAlive)
+        if (hasMotion)
             Movement();
     }
 
@@ -76,26 +76,27 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        switch (collision.gameObject.tag)
+        if (hasMotion)
         {
-            case "LaunchPad":
-                break;
-            case "Finish":
-                if (isAlive)
+            switch (collision.gameObject.tag)
+            {
+                case "LaunchPad":
+                    break;
+                case "Finish":
                     FinishLevel();
-                break;
-            case "Fuel":
-                break;
-            default:
-                if (isAlive)
+                    break;
+                case "Fuel":
+                    break;
+                default:
                     CrashHandler();
-                break;
+                    break;
+            }
         }
     }
 
     void CrashHandler()
     {
-        isAlive = false;
+        hasMotion = false;
 
         if (audioSource.isPlaying)
             audioSource.Stop();
@@ -108,7 +109,7 @@ public class Player : MonoBehaviour
 
     void FinishLevel()
     {
-        isAlive = false;
+        hasMotion = false;
 
         if (audioSource.isPlaying)
             audioSource.Stop();
