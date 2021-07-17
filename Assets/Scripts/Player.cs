@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
 
     int currentSceneIndex;
 
+    bool isAlive = true;
+
     Rigidbody rigidBody;
 
     AudioSource audioSource;
@@ -21,6 +23,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isAlive = true;
         rigidBody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -29,7 +32,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        if (isAlive)
+            Movement();
     }
 
     private void Movement()
@@ -70,16 +74,36 @@ public class Player : MonoBehaviour
             case "LaunchPad":
                 break;
             case "Finish":
-                int nextScene = currentSceneIndex + 1;
-                if (currentSceneIndex + 1 == SceneManager.sceneCountInBuildSettings)
-                    nextScene = 0;
-                SceneManager.LoadScene(nextScene);
+                LoadNextLevel();
                 break;
             case "Fuel":
                 break;
             default:
-                SceneManager.LoadScene(currentSceneIndex);
+                CrashHandler();
                 break;
         }
+    }
+
+    void CrashHandler()
+    {
+        isAlive = false;
+
+        if (audioSource.isPlaying)
+            audioSource.Stop();
+
+        Invoke(nameof(ReLoadLevel), 1f);
+    }
+
+    void LoadNextLevel()
+    {
+        int nextScene = currentSceneIndex + 1;
+        if (currentSceneIndex + 1 == SceneManager.sceneCountInBuildSettings)
+            nextScene = 0;
+        SceneManager.LoadScene(nextScene);
+    }
+
+    void ReLoadLevel()
+    {
+        SceneManager.LoadScene(currentSceneIndex);
     }
 }
