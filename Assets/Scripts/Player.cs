@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     float rotateThrust = 100;
 
+    [SerializeField]
+    float levelLoadingDelay = 1f;
+
     int currentSceneIndex;
 
     bool isAlive = true;
@@ -74,7 +77,7 @@ public class Player : MonoBehaviour
             case "LaunchPad":
                 break;
             case "Finish":
-                LoadNextLevel();
+                FinishLevel();
                 break;
             case "Fuel":
                 break;
@@ -91,7 +94,17 @@ public class Player : MonoBehaviour
         if (audioSource.isPlaying)
             audioSource.Stop();
 
-        Invoke(nameof(ReLoadLevel), 1f);
+        Invoke(nameof(ReLoadLevel), levelLoadingDelay);
+    }
+
+    void FinishLevel()
+    {
+        isAlive = false;
+
+        if (audioSource.isPlaying)
+            audioSource.Stop();
+
+        Invoke(nameof(LoadNextLevel), levelLoadingDelay);
     }
 
     void LoadNextLevel()
