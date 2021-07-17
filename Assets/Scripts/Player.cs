@@ -13,7 +13,11 @@ public class Player : MonoBehaviour
     float rotateThrust = 100;
 
     [SerializeField]
-    float levelLoadingDelay = 1f;
+    float levelLoadingDelay = 2.5f;
+
+    [SerializeField]
+    AudioClip[] playerAudioClips;
+
 
     int currentSceneIndex;
 
@@ -44,7 +48,7 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             if (!audioSource.isPlaying)
-                audioSource.Play();
+                audioSource.PlayOneShot(playerAudioClips[0]);
 
             rigidBody.AddRelativeForce(upThrust * Time.deltaTime * Vector3.up);
         }
@@ -77,12 +81,14 @@ public class Player : MonoBehaviour
             case "LaunchPad":
                 break;
             case "Finish":
-                FinishLevel();
+                if (isAlive)
+                    FinishLevel();
                 break;
             case "Fuel":
                 break;
             default:
-                CrashHandler();
+                if (isAlive)
+                    CrashHandler();
                 break;
         }
     }
@@ -94,6 +100,9 @@ public class Player : MonoBehaviour
         if (audioSource.isPlaying)
             audioSource.Stop();
 
+        if (!audioSource.isPlaying)
+            audioSource.PlayOneShot(playerAudioClips[1]);
+
         Invoke(nameof(ReLoadLevel), levelLoadingDelay);
     }
 
@@ -104,14 +113,19 @@ public class Player : MonoBehaviour
         if (audioSource.isPlaying)
             audioSource.Stop();
 
+        if (!audioSource.isPlaying)
+            audioSource.PlayOneShot(playerAudioClips[2]);
+
         Invoke(nameof(LoadNextLevel), levelLoadingDelay);
     }
 
     void LoadNextLevel()
     {
         int nextScene = currentSceneIndex + 1;
+
         if (currentSceneIndex + 1 == SceneManager.sceneCountInBuildSettings)
             nextScene = 0;
+
         SceneManager.LoadScene(nextScene);
     }
 
