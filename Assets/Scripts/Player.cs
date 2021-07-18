@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     AudioClip[] playerAudioClips;
 
+    [SerializeField]
+    ParticleSystem[] particleVFX;
 
     int currentSceneIndex;
 
@@ -50,23 +52,40 @@ public class Player : MonoBehaviour
             if (!audioSource.isPlaying)
                 audioSource.PlayOneShot(playerAudioClips[0]);
 
+            if (!particleVFX[0].isPlaying)
+                particleVFX[0].Play();
+
             rigidBody.AddRelativeForce(upThrust * Time.deltaTime * Vector3.up);
         }
         else
         {
             if (audioSource.isPlaying)
                 audioSource.Stop();
+
+            if (particleVFX[0].isPlaying)
+                particleVFX[0].Stop();
         }
-        
+
         if (Input.GetKey(KeyCode.A))
         {
             rigidBody.freezeRotation = true;
             transform.Rotate(rotateThrust * Time.deltaTime * Vector3.forward);
+
+            if (!particleVFX[2].isPlaying)
+                particleVFX[2].Play();
         }
         else if (Input.GetKey(KeyCode.D))
         {
             rigidBody.freezeRotation = true;
             transform.Rotate(rotateThrust * Time.deltaTime * -Vector3.forward);
+
+            if (!particleVFX[1].isPlaying)
+                particleVFX[1].Play();
+        }
+        else
+        {
+            particleVFX[1].Stop();
+            particleVFX[2].Stop();
         }
 
         rigidBody.freezeRotation = false;
@@ -104,6 +123,8 @@ public class Player : MonoBehaviour
         if (!audioSource.isPlaying)
             audioSource.PlayOneShot(playerAudioClips[1]);
 
+        particleVFX[3].Play();
+
         Invoke(nameof(ReLoadLevel), levelLoadingDelay);
     }
 
@@ -116,6 +137,8 @@ public class Player : MonoBehaviour
 
         if (!audioSource.isPlaying)
             audioSource.PlayOneShot(playerAudioClips[2]);
+
+        particleVFX[4].Play();
 
         Invoke(nameof(LoadNextLevel), levelLoadingDelay);
     }
