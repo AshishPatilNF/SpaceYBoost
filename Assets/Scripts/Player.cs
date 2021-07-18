@@ -29,12 +29,15 @@ public class Player : MonoBehaviour
 
     AudioSource audioSource;
 
+    BoxCollider boxCollider;
+
     // Start is called before the first frame update
     void Start()
     {
         hasMotion = true;
         rigidBody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+        boxCollider = GetComponent<BoxCollider>();
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
@@ -42,10 +45,23 @@ public class Player : MonoBehaviour
     void Update()
     {
         if (hasMotion)
-            Movement();
+            FlyingMotion();
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            int nxtScene = currentSceneIndex + 1;
+
+            if (nxtScene == SceneManager.sceneCountInBuildSettings)
+                nxtScene = 0;
+
+            SceneManager.LoadScene(nxtScene);
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+            boxCollider.enabled = !boxCollider.enabled;
     }
 
-    private void Movement()
+    private void FlyingMotion()
     {
         if (Input.GetKey(KeyCode.Space))
         {
