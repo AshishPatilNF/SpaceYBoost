@@ -49,12 +49,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.L))
         {
-            int nxtScene = currentSceneIndex + 1;
-
-            if (nxtScene == SceneManager.sceneCountInBuildSettings)
-                nxtScene = 0;
-
-            SceneManager.LoadScene(nxtScene);
+            LoadNextLevel();
         }
 
         if (Input.GetKeyDown(KeyCode.C))
@@ -163,7 +158,7 @@ public class Player : MonoBehaviour
     {
         int nextScene = currentSceneIndex + 1;
 
-        if (currentSceneIndex + 1 == SceneManager.sceneCountInBuildSettings)
+        if (nextScene == SceneManager.sceneCountInBuildSettings)
             nextScene = 0;
 
         SceneManager.LoadScene(nextScene);
