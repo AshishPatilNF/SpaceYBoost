@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     [SerializeField]
+    float fuel = 50f;
+
+    [SerializeField]
     float upThrust = 1000;
 
     [SerializeField]
@@ -25,16 +28,23 @@ public class Player : MonoBehaviour
 
     bool hasMotion = true;
 
+    bool crashed = false;
+
     Rigidbody rigidBody;
 
     AudioSource audioSource;
 
     BoxCollider boxCollider;
 
+    UIManager uiManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        uiManager = FindObjectOfType<UIManager>();
+        uiManager.UpdateFuel((int)fuel);
         hasMotion = true;
+        crashed = false;
         rigidBody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
         boxCollider = GetComponent<BoxCollider>();
@@ -67,6 +77,15 @@ public class Player : MonoBehaviour
                 particleVFX[0].Play();
 
             rigidBody.AddRelativeForce(upThrust * Time.deltaTime * Vector3.up);
+            fuel -= 0.1f;
+            uiManager.UpdateFuel((int)fuel);
+
+            if (fuel <= 0)
+            {
+                fuel = 0;
+                uiManager.UpdateFuel((int)fuel);
+                hasMotion = false;
+            }
         }
         else
         {
@@ -106,7 +125,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (hasMotion)
+        if (!crashed)
         {
             switch (collision.gameObject.tag)
             {
@@ -127,6 +146,7 @@ public class Player : MonoBehaviour
     void CrashHandler()
     {
         hasMotion = false;
+        crashed = true;
 
         if (audioSource.isPlaying)
             audioSource.Stop();
@@ -142,6 +162,7 @@ public class Player : MonoBehaviour
     void FinishLevel()
     {
         hasMotion = false;
+        crashed = true;
 
         if (audioSource.isPlaying)
             audioSource.Stop();

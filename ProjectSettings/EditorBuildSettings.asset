@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FlyOverAndUnder.unity
     guid: 18b6684d76775944abfbb76a67c8298b
+  - enabled: 1
+    path: Assets/Scenes/FlyInOutOscillating.unity
+    guid: afdf02c377b80bd489f59cc819f116f8
+  - enabled: 1
+    path: Assets/Scenes/FlyUpDownOscillating.unity
+    guid: 7c7da54b61622154fa5ef88df3d7e5a1
   m_configObjects: {}

@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upThrust: 1000
-  rotateThrust: 100
+  rotateThrust: 150
   levelLoadingDelay: 2.5
   playerAudioClips:
   - {fileID: 8300000, guid: dd900651d1a2d484fabb7c92eebbe2b2, type: 3}
