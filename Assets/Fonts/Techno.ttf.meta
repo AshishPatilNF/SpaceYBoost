@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f25b0dc8499d74f49ab74de4681ade52
+guid: 40227cca61a12d941b153f308db0ec3c
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - SPACEBAR
+  - Techno
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

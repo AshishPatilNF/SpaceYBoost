@@ -825,8 +825,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: SpaceY Boost
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7ebbc13cee1f5f64a9983ce4c70f5b6d, type: 2}
-  m_sharedMaterial: {fileID: 4737387462261787295, guid: 7ebbc13cee1f5f64a9983ce4c70f5b6d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5e043fe5081f86540b9bc6388d1bbf9e, type: 2}
+  m_sharedMaterial: {fileID: -8835802012728428080, guid: 5e043fe5081f86540b9bc6388d1bbf9e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -850,13 +850,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 2
+  m_fontStyle: 3
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -959,8 +959,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: QUIT
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7ebbc13cee1f5f64a9983ce4c70f5b6d, type: 2}
-  m_sharedMaterial: {fileID: 4737387462261787295, guid: 7ebbc13cee1f5f64a9983ce4c70f5b6d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5e043fe5081f86540b9bc6388d1bbf9e, type: 2}
+  m_sharedMaterial: {fileID: -8835802012728428080, guid: 5e043fe5081f86540b9bc6388d1bbf9e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -984,8 +984,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1226,8 +1226,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: START
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7ebbc13cee1f5f64a9983ce4c70f5b6d, type: 2}
-  m_sharedMaterial: {fileID: 4737387462261787295, guid: 7ebbc13cee1f5f64a9983ce4c70f5b6d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5e043fe5081f86540b9bc6388d1bbf9e, type: 2}
+  m_sharedMaterial: {fileID: -8835802012728428080, guid: 5e043fe5081f86540b9bc6388d1bbf9e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1251,8 +1251,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
